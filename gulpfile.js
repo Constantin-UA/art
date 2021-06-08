@@ -4,14 +4,11 @@ const gulp = require('gulp');
 const webpack = require('webpack-stream');
 const browsersync = require('browser-sync');
 
-//onst dist = "./dist/";
-const dist = './localhost/';
+const dist = './dist/';
+//const dist = './localhost/';
 
 gulp.task('copy-html', () => {
-	return gulp
-		.src('./src/index.html')
-		.pipe(gulp.dest(dist))
-		.pipe(browsersync.stream());
+	return gulp.src('./src/index.html').pipe(gulp.dest(dist)).pipe(browsersync.stream());
 });
 
 gulp.task('build-js', () => {

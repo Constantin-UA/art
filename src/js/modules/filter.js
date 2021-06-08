@@ -26,8 +26,23 @@ const filter = () => {
 	};
 
 	const useTypeFilter = (selector) => {
-		menu.querySelector(selector).addEventListener('click', () => {
-			typeFilter(wrapper.querySelectorAll(selector));
+		if (selector === '.grandmother' || selector === '.granddad') {
+			menu.querySelector(selector).addEventListener('click', () => {
+				typeFilter();
+			});
+		} else {
+			menu.querySelector(selector).addEventListener('click', () => {
+				typeFilter(wrapper.querySelectorAll(selector));
+			});
+		}
+
+		menu.addEventListener('click', (e) => {
+			let target = e.target;
+
+			if (target && target.tagName == 'LI') {
+				items.forEach((btn) => btn.classList.remove('active'));
+				target.classList.add('active');
+			}
 		});
 	};
 
@@ -36,8 +51,8 @@ const filter = () => {
 	useTypeFilter('.chef');
 	useTypeFilter('.girl');
 	useTypeFilter('.guy');
-	typeFilter();
-	typeFilter();
+	useTypeFilter('.grandmother');
+	useTypeFilter('.granddad');
 };
 
 export default filter;
