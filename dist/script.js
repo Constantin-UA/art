@@ -5050,7 +5050,7 @@ var scrolling = function scrolling(upSelector) {
   }); // Scrolling with raf
 
   var links = document.querySelectorAll('[href^="#"]'),
-      speed = 0.7;
+      speed = 0.3;
   links.forEach(function (link) {
     link.addEventListener('click', function (event) {
       event.preventDefault();
@@ -5067,7 +5067,7 @@ var scrolling = function scrolling(upSelector) {
 
         var progress = time - start,
             r = toBlock < 0 ? Math.max(widthTop - progress / speed, widthTop + toBlock) : Math.min(widthTop + progress / speed, widthTop + toBlock);
-        document.documentElement.scrollTop(0, r);
+        document.documentElement.scrollTo(0, r);
 
         if (r != widthTop + toBlock) {
           requestAnimationFrame(step);
